@@ -1,0 +1,52 @@
+1-
+use std::io;
+
+fn main() {
+    loop {
+        let mut input1 = String::new();
+        let mut input2 = String::new();
+
+        println!("Digite o primeiro número:");
+        io::stdin().read_line(&mut input1).expect("Falha ao ler a linha");
+        let num1: f64 = input1.trim().parse().expect("Por favor, digite um número válido");
+
+        println!("Digite o segundo número:");
+        io::stdin().read_line(&mut input2).expect("Falha ao ler a linha");
+        let num2: f64 = input2.trim().parse().expect("Por favor, digite um número válido");
+
+        println!("Digite '1' para somar ou '2' para multiplicar:");
+        let mut operacao = String::new();
+        io::stdin().read_line(&mut operacao).expect("Falha ao ler a linha");
+        
+        match operacao.trim() {
+            "1" => {
+                let resultado = num1 + num2;
+                println!("O resultado da soma é: {}", resultado);
+                break;
+            }
+            "2" => {
+                let resultado = num1 * num2;
+                println!("O resultado da multiplicação é: {}", resultado);
+                break;
+            }
+            _ => println!("Opção inválida, tente novamente."),
+        }
+    }
+}
+
+================================//=======================================================
+
+fn preenche_arr(arr: &mut [i32], x: i32) {
+    for i in 0..arr.len() {
+        arr[i] = i as i32 * x;
+    }
+}
+
+fn main() {
+    let mut arr = [0; 10]; 
+    let valor = 3; 
+
+    preenche_arr(&mut arr, valor);
+
+    println!("Array preenchido: {:?}", arr);
+}
